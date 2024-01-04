@@ -1,0 +1,4 @@
+https://medium.com/@moinahmed9999/a-brief-overview-of-protocol-buffers-and-java-implementation-f813789d50da
+
+protoc --proto_path=src --java_out=src/main/java src/main/proto/People.proto
+
