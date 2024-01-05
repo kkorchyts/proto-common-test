@@ -1,7 +1,7 @@
 Useful info:
 
 License installation (PKX error)
-    in IE Explorer open site (maven...), push the "View site information"\ (url line) -> Connection and secure -> show certificate
+    in IE Explorer open site (https://repo.maven.apache.org/; ...), push the "View site information"\ (url line) -> Connection and secure -> show certificate
     Download the certificate
     add certificate to jdk
         keytool -import -alias bintray.com -file bintray.crt -keystore cacerts
