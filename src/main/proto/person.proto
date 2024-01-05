@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package addressbook;
+
+option java_package = "com.kkorchyts.grpc.addressbook";
+option java_multiple_files = true;
+
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  optional string email = 3;
+
+  repeated string numbers = 4;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}
