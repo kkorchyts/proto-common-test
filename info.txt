@@ -1,4 +1,76 @@
-https://medium.com/@moinahmed9999/a-brief-overview-of-protocol-buffers-and-java-implementation-f813789d50da
+Useful info:
 
-protoc --proto_path=src --java_out=src/main/java src/main/proto/People.proto
+License installation (PKX error - PKIX path building failed: SunCertPathBuilderException: unable to find valid certification path to requested target)
+    https://magicmonster.com/kb/prg/java/ssl/pkix_path_building_failed/
+    https://mkyong.com/webservices/jax-ws/suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requested-target/
+    in IE Explorer open site (https://repo.maven.apache.org/; ...), push the "View site information"\ (url line) -> Connection and secure -> show certificate
+    Download the certificate
+    add certificate to jdk
+        keytool -import -alias bintray.com -file bintray.crt -keystore cacerts
+        \jdk-21\lib\security>keytool -import -file SSL-SG1-GLOBAL.crt -keystore cacerts
 
+maven
+    Building Java Projects with Maven
+        https://spring.io/guides/gs/maven/
+
+    lifecycle, phases and goals
+        https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+        https://www.baeldung.com/maven-goals-phases
+    plugins
+        common info
+            https://www.tutorialspoint.com/maven/maven_plugins.htm#:~:text=Build%20plugins,xml.
+            https://maven.apache.org/guides/introduction/introduction-to-plugins.html
+            Plugin configuration
+                https://maven.apache.org/guides/mini/guide-configuring-plugins.html#Using_the_.3Cexecutions.3E_Tag
+            Apache Maven Enforcer Built-In Rules
+                https://maven.apache.org/enforcer/enforcer-rules/requireUpperBoundDeps.html
+        Maven Compiler Plugin
+            https://www.baeldung.com/maven-compiler-plugin
+            https://maven.apache.org/plugins/maven-compiler-plugin/
+
+        Maven Failsafe Plugin: The Failsafe Plugin is designed to run integration tests while the Surefire Plugin is designed to run unit tests. The name (failsafe) was chosen both because it is a synonym of surefire and because it implies that when it fails, it does so in a safe way.
+            https://maven.apache.org/surefire/maven-failsafe-plugin/history.html
+protobuf
+    commands:
+        to generate source code from proto
+        protoc -I=. --java_out=. person.proto
+        protoc --proto_path=src --java_out=src/main/java src/main/proto/People.proto
+
+    common articles
+        https://protobuf.dev/getting-started/javatutorial/
+        https://medium.com/@moinahmed9999/a-brief-overview-of-protocol-buffers-and-java-implementation-f813789d50da
+        https://www.baeldung.com/google-protocol-buffer
+
+    maven plugins
+        protobuf-maven-plugin
+            https://www.xolstice.org/protobuf-maven-plugin/index.html
+
+        os-maven-plugin
+            https://github.com/trustin/os-maven-plugin
+
+    Examples:
+        https://github.com/elenakozlova/maven-protobuf
+        https://blog.jetbrains.com/idea/2023/05/how-to-work-with-protobuf-maven-projects-in-intellij-idea/
+
+protobuf validation
+    common articles
+        https://gitee.com/wuzhc123/protoc-gen-validate
+        https://pkg.go.dev/github.com/envoyproxy/protoc-gen-validate#section-
+        https://github.com/bufbuild/protoc-gen-validate
+Grpc:
+    common articles
+        https://medium.com/@AlexanderObregon/getting-started-with-grpc-in-spring-boot-using-the-grpcservice-annotation-2decabbb3a02
+        https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol
+    maven
+        https://github.com/grpc/grpc-java/issues/10251
+    code
+        https://github.com/grpc/grpc-java
+
+Testing
+    Common articles
+        https://www.freecodecamp.org/news/java-unit-testing/
+    JUnit:
+        https://github.com/junit-team/junit5-samples/blob/r5.10.1/junit5-jupiter-starter-maven/pom.xml
+            https://github.com/junit-team/junit5-samples/blob/main/junit5-jupiter-starter-maven/src/test/java/com/example/project/CalculatorTests.java
+    Mockito
+        https://www.baeldung.com/mockito-annotations
