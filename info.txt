@@ -1,6 +1,8 @@
 Useful info:
 
-License installation (PKX error)
+License installation (PKX error - PKIX path building failed: SunCertPathBuilderException: unable to find valid certification path to requested target)
+    https://magicmonster.com/kb/prg/java/ssl/pkix_path_building_failed/
+    https://mkyong.com/webservices/jax-ws/suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requested-target/
     in IE Explorer open site (https://repo.maven.apache.org/; ...), push the "View site information"\ (url line) -> Connection and secure -> show certificate
     Download the certificate
     add certificate to jdk
@@ -8,7 +10,20 @@ License installation (PKX error)
         \jdk-21\lib\security>keytool -import -file SSL-SG1-GLOBAL.crt -keystore cacerts
 
 maven
+    Building Java Projects with Maven
+        https://spring.io/guides/gs/maven/
+
+    lifecycle, phases and goals
+        https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+        https://www.baeldung.com/maven-goals-phases
     plugins
+        common info
+            https://www.tutorialspoint.com/maven/maven_plugins.htm#:~:text=Build%20plugins,xml.
+            https://maven.apache.org/guides/introduction/introduction-to-plugins.html
+            Plugin configuration
+                https://maven.apache.org/guides/mini/guide-configuring-plugins.html#Using_the_.3Cexecutions.3E_Tag
+            Apache Maven Enforcer Built-In Rules
+                https://maven.apache.org/enforcer/enforcer-rules/requireUpperBoundDeps.html
         Maven Compiler Plugin
             https://www.baeldung.com/maven-compiler-plugin
             https://maven.apache.org/plugins/maven-compiler-plugin/
