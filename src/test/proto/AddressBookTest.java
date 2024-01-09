@@ -19,6 +19,6 @@ public class AddressBookTest {
     @Test
     void addPersonTest() {
         AddressBook addressBook = AddressBook.newBuilder().addPeople(person).build();
-        assertEquals(1, addressBook.getPeopleCount());
+        Assertions.assertEquals(1, addressBook.getPeopleCount());
     }
 }

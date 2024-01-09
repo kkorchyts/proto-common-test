@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package addressbook;
 
+import "validate/validate.proto";
+
 option java_package = "com.kkorchyts.grpc.addressbook";
 option java_multiple_files = true;
 
@@ -9,7 +11,7 @@ option java_multiple_files = true;
 message Person {
   string name = 1;
   int32 id = 2;
-  optional string email = 3;
+  optional string email = 3 [(validate.rules).string.email = true];
 
   repeated string numbers = 4;
 }

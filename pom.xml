@@ -9,7 +9,8 @@
     <packaging>jar</packaging>
 
     <properties>
-        <protobuf.version>3.25.1</protobuf.version>
+        <protobuf.version>3.21.7</protobuf.version>
+        <pgv.version>0.6.13</pgv.version>
     </properties>
 
 
@@ -38,6 +39,18 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.envoyproxy.protoc-gen-validate</groupId>
+            <artifactId>pgv-java-stub</artifactId>
+            <version>${pgv.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>build.buf.protoc-gen-validate</groupId>
+            <artifactId>pgv-java-stub</artifactId>
+            <version>0.6.13</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
@@ -55,7 +68,8 @@
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.6.1</version>
                 <configuration>
-                    <protoSourceRoot>src/main</protoSourceRoot>
+                    <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
+                    <excludes>${project.basedir}/src/main/proto/validate</excludes>
                     <protocArtifact>
                         com.google.protobuf:protoc:3.21.7:exe:${os.detected.classifier}
                     </protocArtifact>
@@ -66,6 +80,17 @@
                             <goal>compile</goal>
                             <goal>test-compile</goal>
                         </goals>
+                    </execution>
+                    <execution>
+                        <id>protoc-java-pgv</id>
+                        <goals>
+                            <goal>compile-custom</goal>
+                        </goals>
+                        <configuration>
+                            <pluginParameter>lang=java</pluginParameter>
+                            <pluginId>java-pgv</pluginId>
+                            <pluginArtifact>build.buf.protoc-gen-validate:protoc-gen-validate:${pgv.version}:exe:${os.detected.classifier}</pluginArtifact>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
